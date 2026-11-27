@@ -4,12 +4,17 @@
 - Plain HTML, CSS and JavaScript only.
 - No frameworks or libraries (no React, Vue, Tailwind, jQuery, etc.).
 - No build step: files are opened or served exactly as written.
+- One exception: the server uses Anthropic's official SDK (`@anthropic-ai/sdk`, a fixed version in `package.json`) to call the AI. Add no other packages without asking.
+- Run the site with `npm install` (once), then `npm start`, then open http://localhost:3000. The AI tool needs the `ANTHROPIC_API_KEY` environment variable set on the server.
 
 ## Project Structure
 - `index.html`: the portal homepage (tool cards)
-- `tools/`: one page per tool (`tool-1.html` is a placeholder for now)
+- `tools/`: one page per tool (`design-ideas.html`: the Design Idea Generator)
 - `css/style.css`: shared styles, including the light/dark colour tokens
 - `js/theme.js`: the light/dark theme toggle, shared by every page
+- `js/design-ideas.js`: the Design Idea Generator's page logic
+- `server/server.js`: serves the site and handles `POST /api/ideas` (calls Claude Sonnet 5.5; keeps the API key secret; rate-limits visitors)
+- `package.json` / `package-lock.json`: the one dependency and the `npm start` command
 - `CLAUDE.md`: this file
 
 Update this section as files are added.
@@ -31,7 +36,7 @@ A web portal where students try small Engineering Design tools.
 ### Phases
 1. **Portal + first tool (Design Idea Generator).** Homepage, shared header, light/dark theme. The tool: a student enters a problem statement (and optional constraints), and AI returns 3–6 design ideas, each with how it works, strengths, weaknesses and a question to explore next. Includes Copy and Download. A small Node.js server (built-in features only, no packages) keeps the AI key secret and limits usage.
    - [x] Portal: homepage, shared header, theme toggle, and a placeholder "Tool 1 — coming soon" card that opens `tools/tool-1.html` and returns via "← All tools". Styling is neutral for now.
-   - [ ] Design Idea Generator tool and its server.
+   - [x] Design Idea Generator tool and its server (replaced the placeholder; now `tools/design-ideas.html`). Pitched at high-school level.
 2. **Go online.** Choose a host, deploy, and test on real phones and tablets.
 3. **More tools.** Add Engineering Design tools one at a time (ideas: decision matrix, factor of safety, tolerance stack-up).
 

@@ -1,0 +1,16 @@
+{
+  "name": "engineering-design-tools",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A web portal where students try small Engineering Design tools.",
+  "type": "module",
+  "scripts": {
+    "start": "node server/server.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "1.14.0"
+  }
+}

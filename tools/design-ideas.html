@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Design Idea Generator — Engineering Design Tools</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/theme.js"></script>
+  <script src="../js/design-ideas.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a class="site-name" href="../index.html">Engineering Design Tools</a>
+      <div class="header-actions">
+        <a class="back-link" href="../index.html">← All tools</a>
+        <button type="button" class="theme-toggle" aria-pressed="false">Dark theme</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <h1>Design Idea Generator</h1>
+    <p class="intro">Describe a design problem, and get several different ideas for solving it, each with strengths, weaknesses and a question to explore next.</p>
+
+    <form id="idea-form" class="tool-form" novalidate>
+      <div class="field">
+        <label for="problem">Problem statement <span class="required">(required)</span></label>
+        <textarea id="problem" name="problem" rows="5" maxlength="1000" required
+          aria-describedby="problem-hint problem-count"
+          placeholder="Example: Students forget their water bottles in class. Design something that reminds them to take their bottle when they leave."></textarea>
+        <div class="field-meta">
+          <span id="problem-hint">Who has the problem, and what do they need?</span>
+          <span id="problem-count" aria-live="polite">0 / 1000</span>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="constraints">Constraints <span class="optional">(optional)</span></label>
+        <textarea id="constraints" name="constraints" rows="3" maxlength="500"
+          aria-describedby="constraints-hint"
+          placeholder="Example: budget under $20, must fit in a backpack, no batteries"></textarea>
+        <div class="field-meta">
+          <span id="constraints-hint">Limits on cost, size, materials, time and so on.</span>
+        </div>
+      </div>
+
+      <div class="field field-inline">
+        <label for="count">Number of ideas</label>
+        <select id="count" name="count">
+          <option value="3">3</option>
+          <option value="4" selected>4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+        </select>
+      </div>
+
+      <button type="submit" class="button button-primary" id="generate">Generate ideas</button>
+    </form>
+
+    <div id="status" class="status" role="status" aria-live="polite"></div>
+    <div id="error" class="error-box" role="alert" hidden></div>
+
+    <section id="results" class="results" hidden aria-labelledby="results-heading">
+      <h2 id="results-heading" tabindex="-1">Your design ideas</h2>
+      <p class="note">Ideas are AI-generated starting points — check and improve them.</p>
+      <ol id="idea-list" class="idea-list"></ol>
+      <div class="result-actions">
+        <button type="button" class="button" id="again">Generate again</button>
+        <button type="button" class="button" id="copy">Copy all</button>
+        <button type="button" class="button" id="download">Download .txt</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">Engineering Design Tools</div>
+  </footer>
+</body>
+</html>
