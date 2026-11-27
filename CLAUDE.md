@@ -6,10 +6,10 @@
 - No build step: files are opened or served exactly as written.
 
 ## Project Structure
-The project is nearly empty for now. Planned layout:
-- `index.html`: the main page, at the top level
-- `css/`: stylesheets
-- `js/`: scripts
+- `index.html`: the portal homepage (tool cards)
+- `tools/`: one page per tool (`tool-1.html` is a placeholder for now)
+- `css/style.css`: shared styles, including the light/dark colour tokens
+- `js/theme.js`: the light/dark theme toggle, shared by every page
 - `CLAUDE.md`: this file
 
 Update this section as files are added.
@@ -30,6 +30,8 @@ A web portal where students try small Engineering Design tools.
 
 ### Phases
 1. **Portal + first tool (Design Idea Generator).** Homepage, shared header, light/dark theme. The tool: a student enters a problem statement (and optional constraints), and AI returns 3–6 design ideas, each with how it works, strengths, weaknesses and a question to explore next. Includes Copy and Download. A small Node.js server (built-in features only, no packages) keeps the AI key secret and limits usage.
+   - [x] Portal: homepage, shared header, theme toggle, and a placeholder "Tool 1 — coming soon" card that opens `tools/tool-1.html` and returns via "← All tools". Styling is neutral for now.
+   - [ ] Design Idea Generator tool and its server.
 2. **Go online.** Choose a host, deploy, and test on real phones and tablets.
 3. **More tools.** Add Engineering Design tools one at a time (ideas: decision matrix, factor of safety, tolerance stack-up).
 
